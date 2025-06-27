@@ -1,3 +1,3 @@
 # Hi, I'm Charles
-- 🔭 Currently working on Algorithm Learning
+- 🔭 Currently Studying Algorithm
 - 📫 Contact: zf.ye@outlook.com

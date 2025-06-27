@@ -1,2 +1,3 @@
-# Charles-0509.github.io
-Biography
+# Hi, I'm Charles
+- 🔭 Currently working on Algorithm Learning
+- 📫 Contact: zf.ye@outlook.com

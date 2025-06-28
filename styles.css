@@ -1,0 +1,352 @@
+/* 全局样式 - 重置所有元素的默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 页面主体样式 - 设置全屏居中布局 */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 背景容器 - 固定位置覆盖整个视口 */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* 置于内容层之后 */
+    overflow: hidden;
+}
+
+/* 背景图片设置 - 使用伪元素添加背景图并应用模糊效果 */
+.background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px); /* 背景模糊效果 */
+    transform: scale(1.1); /* 稍微放大以避免模糊边缘 */
+}
+
+/* 背景叠加层 - 添加渐变暗色遮罩增强可读性 */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+}
+
+/* 主内容容器 - 控制内容区域的最大宽度和居中 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 1; /* 确保内容显示在背景之上 */
+}
+
+/* 个人资料卡片 - 半透明效果的主要内容区域 */
+.profile-card {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.7); /* 修改为更透明的背景 */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    backdrop-filter: blur(10px); /* 背景模糊效果增强透明感 */
+}
+
+/* 头部区域 - 包含头像、姓名和位置信息 */
+.profile-header {
+    padding: 30px 20px 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* 头像容器 - 控制头像的大小和位置 */
+.avatar-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    position: relative;
+}
+
+/* 头像图片 - 圆形显示并添加边框和阴影 */
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* 圆形头像 */
+    object-fit: cover; /* 保持图片比例填充容器 */
+    border: 3px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 用户名称 - 大号粗体显示 */
+.name {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* 用户位置/标签 - 小号灰色文本 */
+.location {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* 社交链接区域 - 水平居中排列的图标组 */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* 图标间距 */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* 允许在小屏幕上换行 */
+}
+
+/* 社交图标按钮 - 圆形背景的可点击区域 */
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 18px;
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+    text-decoration: none;
+}
+
+/* 社交图标悬停效果 - 轻微上浮并添加阴影 */
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    background-color: #e0e0e0;
+}
+
+/* 自定义图标基础样式 - 控制SVG图标的大小和显示方式 */
+.custom-icon {
+    width: 20px;
+    height: 20px;
+    background-size: contain; /* 保持图标原始比例 */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 知乎图标 */
+.zhihu-icon {
+    background-image: url("images/icons/zhihu.svg");
+}
+
+/* 抖音图标 - 使用内联SVG */
+.douyin-icon {
+    background-image: url("data:image/svg+xml,%3Csvg t='1716285728669' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='7' width='200' height='200'%3E%3Cpath d='M937.4 423.9c-84 0-165.7-27.3-232.9-77.8v352.3c0 179.9-138.6 325.6-309.6 325.6S85.3 878.3 85.3 698.4c0-179.9 138.6-325.6 309.6-325.6 17.1 0 33.7 1.5 49.9 4.3v186.6c-15.5-6.1-32-9.2-49.9-9.2-76.3 0-138.2 65-138.2 145.3 0 80.3 61.9 145.3 138.2 145.3 76.2 0 138.1-65 138.2-145.2V0H707c0 134.5 103.7 243.5 232.2 243.5v180.3h-1.8z' p-id='8' fill='%23000000'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* X(Twitter)图标 */
+.x-icon {
+    background-image: url("images/icons/x.svg");
+}
+
+/* B站图标 */
+.bilibili-icon {
+    background-image: url("images/icons/bilibili.svg");
+}
+
+/* GitHub图标 */
+.github-icon {
+    background-image: url("images/icons/github.svg");
+}
+
+/* 微博图标 */
+.weibo-icon {
+    background-image: url("images/icons/weibo.svg");
+}
+
+/* 个人简介 */
+.bio-section {
+    padding: 0 20px 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.bio {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* 内容区块 */
+.section {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* 账号链接 */
+.account-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.account-item:hover {
+    background-color: #f5f5f5;
+}
+
+.account-item i {
+    font-size: 18px;
+    color: #555;
+    width: 24px;
+    text-align: center;
+}
+
+.account-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* 兴趣标签 */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    padding: 6px 12px;
+    background-color: #f0f2f5;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* 分享按钮 */
+.share-button {
+    padding: 20px;
+    text-align: center;
+}
+
+.share-button button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.share-button button:hover {
+    background-color: #0d6efd;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .profile-card {
+        max-width: 100%;
+    }
+    
+    .avatar-container {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .name {
+        font-size: 24px;
+    }
+    
+    .section {
+        padding: 15px;
+    }
+    
+    .social-links {
+        gap: 10px;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .avatar-container {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .name {
+        font-size: 22px;
+    }
+    
+    .social-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    
+    .section {
+        padding: 12px;
+    }
+    
+    .section-title {
+        font-size: 16px;
+    }
+    
+    .tag {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
